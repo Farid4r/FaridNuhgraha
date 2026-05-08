@@ -1,140 +1,138 @@
 "use client";
-import { useState } from "react";
 
-export default function Portfolio() {
-  // State untuk Modal
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
 
-  // Fungsi untuk membuka dan menutup Modal
-  const openModal = (projectData: any) => setSelectedProject(projectData);
-  const closeModal = () => setSelectedProject(null);
+// Import Semua Komponen
+import Portfolio from "../components/Portfolio";
+import ToolsProcess from "../components/ToolsProcess";
+import ContactFooter from "../components/ContactFooter";
+
+export default function Home() {
+  useEffect(() => {
+    // 1. Setup Lenis
+    const lenis = new Lenis({ lerp: 0.08 });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // 2. Register GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    setTimeout(() => {
+      // 3. Hero Animasi
+      gsap.to(".gsap-reveal", {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
+
+      // 4. Portfolio Scroll Animasi
+      gsap.utils.toArray(".portfolio-item").forEach((item: any, i: number) => {
+        gsap.to(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: i * 0.1
+        });
+      });
+
+      // 5. Tools & Process Scroll Animasi
+      gsap.utils.toArray(".about-reveal").forEach((elem: any) => {
+        gsap.to(elem, {
+          scrollTrigger: {
+            trigger: elem,
+            start: "top 90%",
+            toggleActions: "play none none none"
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out"
+        });
+      });
+
+      // 6. Contact & Footer Scroll Animasi (Ini yang membuat Footer muncul kembali)
+      gsap.utils.toArray(".contact-reveal").forEach((elem: any) => {
+        gsap.to(elem, {
+          scrollTrigger: {
+            trigger: "#contact",
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out"
+        });
+      });
+      
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      lenis.destroy();
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
   return (
-    <>
-      <section id="works" className="container mx-auto px-6 py-24">
-        {/* Header Portfolio */}
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 dark:text-white">Selected Works</h2>
-            <p className="text-gray-600 dark:text-gray-400 max-w-lg text-lg">A showcase of my recent design projects, blending strategy with minimalism.</p>
-          </div>
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide text-sm font-medium text-gray-500 dark:text-gray-400">
-            <button className="text-dark dark:text-white border-b-2 border-primary pb-1 whitespace-nowrap">All Works</button>
-            <button className="hover:text-primary dark:hover:text-primary pb-1 whitespace-nowrap transition-colors">Branding</button>
-            <button className="hover:text-primary dark:hover:text-primary pb-1 whitespace-nowrap transition-colors">Poster</button>
-            <button className="hover:text-primary dark:hover:text-primary pb-1 whitespace-nowrap transition-colors">Social Media</button>
-          </div>
+    <main>
+      {/* Hero Section */}
+      <section id="about" className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 pt-32 pb-12 gap-12">
+        <div className="w-full md:w-3/5 flex flex-col items-start">
+            <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
+                Halo, saya Farid. <br className="hidden md:block" />
+                <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Graphic Designer.</span>
+            </h1>
+            <div className="gsap-reveal text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed space-y-4">
+                <p>
+                    Mahasiswa 21 tahun yang menaruh ketertarikan pada desain grafis dengan pendekatan <span className="font-semibold text-dark dark:text-white"> visual yang clean, minimal, dan fungsional. </span> Percaya bahwa desain yang baik bukan hanya terlihat indah, tetapi juga mampu menyampaikan pesan dengan impact yang kuat.
+                </p>
+            </div>
+            <div className="gsap-reveal flex flex-wrap gap-4 mb-10">
+                <a href="#works" className="bg-dark dark:bg-white text-white dark:text-dark px-8 py-3 rounded-full font-medium hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 transform hover:-translate-y-1">
+                    Portfolio
+                </a>
+                <a href="#contact" className="border border-gray-300 dark:border-gray-700 text-dark dark:text-white px-8 py-3 rounded-full font-medium hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-all duration-300">
+                    Hubungi Saya
+                </a>
+            </div>
+            <div className="gsap-reveal inline-flex items-center gap-3 text-sm font-medium text-dark dark:text-white bg-gray-50 dark:bg-gray-800 px-5 py-2.5 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                </span>
+                Available for freelance work
+            </div>
         </div>
-
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
-          
-          {/* Item 1 */}
-          <div 
-            onClick={() => openModal({ title: "Lumina Visual Identity", category: "Branding", img: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=1000&auto=format&fit=crop" })}
-            className="portfolio-item col-span-1 md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden relative group bg-gray-100 dark:bg-gray-800 cursor-pointer"
-          >
-            <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=1000&auto=format&fit=crop" alt="Branding" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-              <span className="text-primary font-medium text-sm mb-2 tracking-wider uppercase">Branding</span>
-              <h3 className="text-white text-3xl font-bold">Lumina Visual Identity</h3>
+        <div className="gsap-reveal w-full md:w-2/5 flex justify-center md:justify-end mb-8 md:mb-0">
+            <div className="w-full max-w-sm aspect-[4/5] rounded-[2rem] overflow-hidden relative group shadow-2xl shadow-primary/10">
+                {/* Pastikan gambar profil ada di public/assets/ */}
+                <img src="/assets/profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
+                <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </div>
-          </div>
-
-          {/* Item 2 */}
-          <div 
-            onClick={() => openModal({ title: "Aura Studio", category: "Logo", img: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=600&auto=format&fit=crop" })}
-            className="portfolio-item rounded-3xl overflow-hidden relative group bg-gray-100 dark:bg-gray-800 cursor-pointer"
-          >
-            <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?q=80&w=600&auto=format&fit=crop" alt="Logo Design" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <span className="text-primary font-medium text-xs mb-1 tracking-wider uppercase">Logo</span>
-              <h3 className="text-white text-xl font-bold">Aura Studio</h3>
-            </div>
-          </div>
-
-          {/* Item 3 */}
-          <div 
-            onClick={() => openModal({ title: "Art Exhibition", category: "Poster", img: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600&auto=format&fit=crop" })}
-            className="portfolio-item md:row-span-2 rounded-3xl overflow-hidden relative group bg-gray-100 dark:bg-gray-800 cursor-pointer"
-          >
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600&auto=format&fit=crop" alt="Poster Design" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-linear-to-trom-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <span className="text-primary font-medium text-xs mb-1 tracking-wider uppercase">Poster</span>
-              <h3 className="text-white text-xl font-bold">Art Exhibition</h3>
-            </div>
-          </div>
-
-          {/* Item 4 */}
-          <div 
-            onClick={() => openModal({ title: "Tech Innovators Campaign", category: "Social Media", img: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" })}
-            className="portfolio-item col-span-1 md:col-span-2 rounded-3xl overflow-hidden relative group bg-gray-100 dark:bg-gray-800 cursor-pointer"
-          >
-            <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" alt="Social Media" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <span className="text-primary font-medium text-xs mb-1 tracking-wider uppercase">Social Media</span>
-              <h3 className="text-white text-xl font-bold">Tech Innovators Campaign</h3>
-            </div>
-          </div>
-
-          {/* Item 5 */}
-          <div 
-            onClick={() => openModal({ title: "Eco Guide", category: "Pamphlet", img: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=600&auto=format&fit=crop" })}
-            className="portfolio-item rounded-3xl overflow-hidden relative group bg-gray-100 dark:bg-gray-800 cursor-pointer"
-          >
-            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=600&auto=format&fit=crop" alt="Pamphlet" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-            <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <span className="text-primary font-medium text-xs mb-1 tracking-wider uppercase">Pamphlet</span>
-              <h3 className="text-white text-xl font-bold">Eco Guide</h3>
-            </div>
-          </div>
-        </div>
+        </div> 
       </section>
 
-      {/* Render Modal secara bersyarat (Hanya muncul jika ada project yang dipilih) */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-60 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div onClick={closeModal} className="absolute inset-0 bg-dark/90 backdrop-blur-sm cursor-pointer animate-fade-in"></div>
-          
-          {/* Modal Content */}
-          <div className="relative bg-white dark:bg-dark w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl transition-colors duration-300 animate-slide-up">
-            
-            {/* Tombol Close */}
-            <button onClick={closeModal} className="absolute top-4 right-4 md:top-6 md:right-6 z-10 bg-white/80 dark:bg-dark/80 hover:bg-dark dark:hover:bg-white hover:text-white dark:hover:text-dark text-dark dark:text-white rounded-full p-2 backdrop-blur-md transition-colors shadow-sm">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-            
-            {/* Isi Detail */}
-            <div className="flex flex-col md:flex-row">
-              <div className="w-full md:w-1/2 h-[40vh] md:h-auto bg-gray-100 dark:bg-gray-800">
-                <img src={selectedProject.img} alt={selectedProject.title} className="w-full h-full object-cover" />
-              </div>
-              <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col">
-                <span className="text-primary font-medium text-sm tracking-wider uppercase mb-2">{selectedProject.category}</span>
-                <h3 className="text-3xl md:text-4xl font-bold mb-6 text-dark dark:text-white">{selectedProject.title}</h3>
-                
-                <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-lg">
-                  Ini adalah deskripsi detail untuk project <strong>{selectedProject.title}</strong>. Di sini kamu bisa menjelaskan latar belakang, tantangan desain, proses kreatif, dan solusi visual yang kamu berikan untuk klien.
-                </p>
-                
-                <div className="grid grid-cols-2 gap-6 border-t border-gray-100 dark:border-gray-800 pt-8 mt-auto">
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1 font-semibold">Year</p>
-                    <p className="font-medium text-dark dark:text-white">2026</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1 font-semibold">Role</p>
-                    <p className="font-medium text-dark dark:text-white">Lead Designer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+      {/* Rendering Komponen di Bawah Hero */}
+      <Portfolio />
+      <ToolsProcess />
+      <ContactFooter />
+      
+    </main>
   );
 }
