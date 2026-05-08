@@ -5,7 +5,7 @@ export default function ToolsProcess() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Tools */}
           <div className="bg-white dark:bg-dark p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 about-reveal transition-colors duration-300">
-            <h3 className="text-2xl font-bold mb-6 dark:text-white">My Toolkit</h3>
+            <h3 className="text-2xl font-bold mb-6 dark:text-white">Software yang digunakan</h3>
             <div className="flex flex-wrap gap-4">
               <span className="group flex items-center gap-2.5 px-5 py-2.5 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-all duration-300 cursor-default shadow-sm hover:shadow">
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
@@ -37,19 +37,6 @@ export default function ToolsProcess() {
             </div>
           </div>
 
-          {/* Process */}
-          <div className="bg-white dark:bg-dark p-8 md:p-10 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 about-reveal transition-colors duration-300">
-            <h3 className="text-2xl font-bold mb-6 dark:text-white">Creative Process</h3>
-            <div className="flex items-center gap-3 text-sm md:text-base font-medium text-gray-500 dark:text-gray-400 overflow-x-auto pb-2 scrollbar-hide">
-              <span className="text-dark dark:text-gray-200 whitespace-nowrap">Research</span>
-              <svg className="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              <span className="text-dark dark:text-gray-200 whitespace-nowrap">Sketch</span>
-              <svg className="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              <span className="text-dark dark:text-gray-200 whitespace-nowrap">Design</span>
-              <svg className="w-5 h-5 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              <span className="text-dark dark:text-gray-200 whitespace-nowrap">Output</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

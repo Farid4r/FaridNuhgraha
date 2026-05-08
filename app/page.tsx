@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import ContactFooter from "../components/ContactFooter";
-
+import MyVideo from "../components/MyVideo";
 // Import Komponen yang baru dibuat
 import Portfolio from "../components/Portfolio";
 import ToolsProcess from "../components/ToolsProcess";
@@ -64,24 +64,38 @@ export default function Home() {
           ease: "power3.out"
         });
       });
-// Cari bagian animasi contact di useEffect app/page.tsx dan ganti menjadi:
+      // Cari bagian animasi contact di useEffect app/page.tsx dan ganti menjadi:
 
-// 6. Contact & Footer Scroll Animasi
-const contactElements = document.querySelectorAll(".contact-reveal");
-if (contactElements.length > 0) {
-  gsap.to(".contact-reveal", {
-    scrollTrigger: {
-      trigger: "#contact", // Pastikan ID ini ada di section contact
-      start: "top 80%",
-      toggleActions: "play none none none",
-    },
-    y: 0,
-    opacity: 1,
-    duration: 1,
-    stagger: 0.1,
-    ease: "power3.out",
-  });
-}
+      // 6. Contact & Footer Scroll Animasi
+      const contactElements = document.querySelectorAll(".contact-reveal");
+      if (contactElements.length > 0) {
+        gsap.to(".contact-reveal", {
+          scrollTrigger: {
+            trigger: "#contact", // Pastikan ID ini ada di section contact
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+        // 7. MyVideo Scroll Animasi
+        gsap.utils.toArray(".video-item").forEach((item: any) => {
+          gsap.to(item, {
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out"
+          });
+        });
+      }
       
       // Refresh ScrollTrigger agar kalkulasi posisinya akurat
       ScrollTrigger.refresh();
@@ -100,11 +114,11 @@ if (contactElements.length > 0) {
         <div className="w-full md:w-3/5 flex flex-col items-start">
             <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
                 Halo, saya Farid. <br className="hidden md:block" />
-                <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Wong Iseng.</span>
+                <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Wong Iseng</span>
             </h1>
             <div className="gsap-reveal text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed space-y-4">
                 <p>
-                    Graphic design enthusiast yang sedang sedang mengumpulkan portofolio biar bisa bekerja dimana aja, asal halal.</p>
+                    Graphic design enthusiast yang lagi ngumpulin portofolio biar bisa kerja dimana aja, asal halal.</p>
             </div>
             <div className="gsap-reveal flex flex-wrap gap-4 mb-10">
                 <a href="#works" className="bg-dark dark:bg-white text-white dark:text-dark px-8 py-3 rounded-full font-medium hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 transform hover:-translate-y-1">
@@ -125,8 +139,9 @@ if (contactElements.length > 0) {
 
       {/* Panggil Komponen Portfolio dan Tools & Process */}
       <Portfolio />
+      <MyVideo />
       <ToolsProcess />
-      <ContactFooter/>
+      <ContactFooter />
       
     </main>
   );
