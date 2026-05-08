@@ -21,4 +21,9 @@ html.lenis { height: auto; }
 .gsap-reveal { opacity: 0; transform: translateY(30px); }
 .portfolio-item { opacity: 0; transform: translateY(50px); }
 .about-reveal { opacity: 0; transform: translateY(30px); }
-.contact-reveal { opacity: 0; transform: translateY(30px); }
+/* Ubah dari opacity: 0 menjadi opacity: 1 jika ingin langsung muncul tanpa animasi */
+.contact-reveal { 
+  opacity: 0; 
+  transform: translateY(30px); 
+  transition: opacity 0.5s ease; /* Cadangan jika GSAP gagal */
+}
