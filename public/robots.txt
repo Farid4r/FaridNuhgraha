@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://faridnuhgraha.vercel.app/sitemap.xml
