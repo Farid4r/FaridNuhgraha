@@ -106,7 +106,7 @@ export default function Portfolio() {
 
       {/* MODAL SECTION */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
           {/* Backdrop (Bisa di-klik untuk menutup modal) */}
           <div onClick={closeModal} className="absolute inset-0 bg-dark/90 backdrop-blur-sm animate-fade-in cursor-pointer"></div>
           

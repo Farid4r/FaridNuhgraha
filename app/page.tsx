@@ -113,12 +113,12 @@ export default function Home() {
       <section id="about" className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 pt-32 pb-12 gap-12">
         <div className="w-full md:w-3/5 flex flex-col items-start">
             <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
-                Halo, saya Farid. <br className="hidden md:block" />
+                Halo, saya Farid. <br/>
                 <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Wong Iseng</span>
             </h1>
             <div className="gsap-reveal text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed space-y-4">
                 <p>
-                    Graphic design enthusiast yang lagi ngumpulin portofolio biar bisa kerja dimana aja, asal halal.</p>
+                    Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio desain grafis & videography. Open kerja di mana aja <span className="italic">(kalo bisa WFH)</span>, selama itu halal.</p>
             </div>
             <div className="gsap-reveal flex flex-wrap gap-4 mb-10">
                 <a href="#works" className="bg-dark dark:bg-white text-white dark:text-dark px-8 py-3 rounded-full font-medium hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 transform hover:-translate-y-1">
