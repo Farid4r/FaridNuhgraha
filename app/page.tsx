@@ -100,12 +100,11 @@ if (contactElements.length > 0) {
         <div className="w-full md:w-3/5 flex flex-col items-start">
             <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
                 Halo, saya Farid. <br className="hidden md:block" />
-                <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Graphic Designer.</span>
+                <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Wong Iseng.</span>
             </h1>
             <div className="gsap-reveal text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed space-y-4">
                 <p>
-                    Mahasiswa 21 tahun yang menaruh ketertarikan pada desain grafis dengan pendekatan <span className="font-semibold text-dark dark:text-white"> visual yang clean, minimal, dan fungsional. </span> Percaya bahwa desain yang baik bukan hanya terlihat indah, tetapi juga mampu menyampaikan pesan dengan impact yang kuat.
-                </p>
+                    Graphic design enthusiast yang Masih merintis di era AI saat ini.</p>
             </div>
             <div className="gsap-reveal flex flex-wrap gap-4 mb-10">
                 <a href="#works" className="bg-dark dark:bg-white text-white dark:text-dark px-8 py-3 rounded-full font-medium hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 transform hover:-translate-y-1">
@@ -115,17 +114,10 @@ if (contactElements.length > 0) {
                     Hubungi Saya
                 </a>
             </div>
-            <div className="gsap-reveal inline-flex items-center gap-3 text-sm font-medium text-dark dark:text-white bg-gray-50 dark:bg-gray-800 px-5 py-2.5 rounded-full border border-gray-200 dark:border-gray-700 shadow-sm transition-colors">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                </span>
-                Available for freelance work
-            </div>
         </div>
         <div className="gsap-reveal w-full md:w-2/5 flex justify-center md:justify-end mb-8 md:mb-0">
             <div className="w-full max-w-sm aspect-4/5 rounded-4xl overflow-hidden relative group shadow-2xl shadow-primary/10">
-                <img src="/assets/profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
+                <img src="assets/profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
                 <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </div>
         </div> 

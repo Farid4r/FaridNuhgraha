@@ -3,15 +3,15 @@ export default function Portfolio() {
     <section id="works" className="container mx-auto px-6 py-24">
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 dark:text-white">Selected Works</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-lg text-lg">A showcase of my recent design projects, blending strategy with minimalism.</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 dark:text-white">Project & Karya</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-lg text-lg">Kumpulan hasil desain yang saya buat dengan mood yang baik pastinya.</p>
         </div>
-        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide text-sm font-medium text-gray-500 dark:text-gray-400">
+        {/* <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide text-sm font-medium text-gray-500 dark:text-gray-400">
           <button className="text-dark dark:text-white border-b-2 border-primary pb-1 whitespace-nowrap">All Works</button>
           <button className="hover:text-primary dark:hover:text-primary pb-1 whitespace-nowrap transition-colors">Branding</button>
           <button className="hover:text-primary dark:hover:text-primary pb-1 whitespace-nowrap transition-colors">Poster</button>
           <button className="hover:text-primary dark:hover:text-primary pb-1 whitespace-nowrap transition-colors">Social Media</button>
-        </div>
+        </div> */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
