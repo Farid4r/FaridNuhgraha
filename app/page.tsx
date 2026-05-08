@@ -64,21 +64,24 @@ export default function Home() {
           ease: "power3.out"
         });
       });
-      // 6. Contact Section Animasi
-         gsap.utils.toArray(".contact-reveal").forEach((elem: any) => {
-           gsap.to(elem, {
-             scrollTrigger: {
-               trigger: "#contact",
-               start: "top 80%",
-               toggleActions: "play none none none"
-             },
-             y: 0,
-             opacity: 1,
-             duration: 1,
-             stagger: 0.2,
-             ease: "power3.out"
-           });
-         });
+// Cari bagian animasi contact di useEffect app/page.tsx dan ganti menjadi:
+
+// 6. Contact & Footer Scroll Animasi
+const contactElements = document.querySelectorAll(".contact-reveal");
+if (contactElements.length > 0) {
+  gsap.to(".contact-reveal", {
+    scrollTrigger: {
+      trigger: "#contact", // Pastikan ID ini ada di section contact
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    stagger: 0.1,
+    ease: "power3.out",
+  });
+}
       
       // Refresh ScrollTrigger agar kalkulasi posisinya akurat
       ScrollTrigger.refresh();
