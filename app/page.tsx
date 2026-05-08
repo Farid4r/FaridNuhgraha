@@ -104,7 +104,7 @@ if (contactElements.length > 0) {
             </h1>
             <div className="gsap-reveal text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed space-y-4">
                 <p>
-                    Graphic design enthusiast yang Masih merintis di era AI saat ini.</p>
+                    Graphic design enthusiast yang sedang sedang mengumpulkan portofolio biar bisa bekerja dimana aja, asal halal.</p>
             </div>
             <div className="gsap-reveal flex flex-wrap gap-4 mb-10">
                 <a href="#works" className="bg-dark dark:bg-white text-white dark:text-dark px-8 py-3 rounded-full font-medium hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 transform hover:-translate-y-1">
@@ -117,7 +117,7 @@ if (contactElements.length > 0) {
         </div>
         <div className="gsap-reveal w-full md:w-2/5 flex justify-center md:justify-end mb-8 md:mb-0">
             <div className="w-full max-w-sm aspect-4/5 rounded-4xl overflow-hidden relative group shadow-2xl shadow-primary/10">
-                <img src="assets/profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
+                <img src="assets/Profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
                 <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </div>
         </div> 
