@@ -1,23 +1,33 @@
 "use client";
+import { usePathname } from "next/navigation"; // Import ini untuk deteksi halaman
 
 export default function ContactFooter() {
+  const pathname = usePathname();
+  const isHome = pathname === "/"; // Cek apakah sedang di Home
+
+  // Class helper untuk memaksa tampil jika bukan di Home
+  const revealClass = !isHome ? "!opacity-100 !translate-y-0" : "opacity-0 translate-y-10";
+
   return (
     <>
       {/* Contact Section */}
       <section id="contact" className="bg-white dark:bg-dark py-32 md:py-40 transition-colors duration-300">
         <div className="container mx-auto px-6 text-center">
-          <p className="contact-reveal text-primary font-medium tracking-wider uppercase text-sm mb-4">What's Next?</p>
-          <h2 className="contact-reveal text-5xl md:text-7xl font-bold tracking-tight mb-8 dark:text-white">Tertarik dengan proyek saya?<br />
+          <p className={`contact-reveal text-primary font-medium tracking-wider uppercase text-sm mb-4 ${revealClass}`}>
+            What's Next?
+          </p>
+          <h2 className={`contact-reveal text-5xl md:text-7xl font-bold tracking-tight mb-8 dark:text-white ${revealClass}`}>
+            Tertarik dengan proyek saya?<br />
             <span className="text-gray-400 italic font-normal">Mari bekerja sama.</span>
           </h2>
           
-          <div className="contact-reveal flex justify-center mb-16">
+          <div className={`contact-reveal flex justify-center mb-16 ${revealClass}`}>
             <a href="mailto:faridnuhgraha.4@gmail.com" className="text-3xl md:text-5xl font-medium border-b-2 border-dark dark:border-white hover:text-primary dark:hover:text-primary hover:border-primary dark:hover:border-primary transition-colors pb-2 dark:text-white">
               Email Saya
             </a>
           </div>
 
-          <div className="contact-reveal flex flex-wrap justify-center gap-8 md:gap-10 text-gray-500 dark:text-gray-400">
+          <div className={`contact-reveal flex flex-wrap justify-center gap-8 md:gap-10 text-gray-500 dark:text-gray-400 ${revealClass}`}>
             {/* Instagram */}
             <a href="https://instagram.com/frydnhgrha" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-primary dark:hover:text-primary transform hover:-translate-y-1 transition-all duration-300">
               <svg className="w-8 h-8 md:w-10 md:h-10" fill="currentColor" viewBox="0 0 24 24">

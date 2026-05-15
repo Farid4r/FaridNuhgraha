@@ -11,19 +11,25 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
       id: "1",
       title: "Goes To Tasik",
       vimeoId: "1190497149", 
-      description: "Bagian 1 - Pergi ke tasik buat tugas kuliah"
+      // description: "Bagian 1 - Pergi ke tasik buat tugas kuliah"
     },
     {
       id: "2",
       title: "At Tasikmalaya",
       vimeoId: "1190521095", 
-      description: "Bagian 2 - Persiapan H-1 acara tugas kuliah"
+      // description: "Bagian 2 - Persiapan H-1 acara tugas kuliah"
     },
     {
       id: "3",
+      title: "Family Gathering Recap",
+      vimeoId: "1190688538", 
+      // description: "Recap video buat ulang tahun ke-21"
+    },
+    {
+      id: "4",
       title: "Birthday Recap 21th",
       vimeoId: "1177724269", 
-      description: "Recap video buat ulang tahun ke-21"
+      // description: "Recap video buat ulang tahun ke-21"
     }
   ];
 
@@ -66,9 +72,9 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
               </div>
               <div className="mt-6 px-2">
                 <h3 className="text-2xl font-bold dark:text-white mb-2">{video.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                {/* <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {video.description}
-                </p>
+                </p> */}
               </div>
             </div>
           ))}

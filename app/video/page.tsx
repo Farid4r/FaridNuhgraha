@@ -28,10 +28,10 @@ export default function VideoPage() {
           </Link>
 
           {/* Header Halaman */}
-          <div className="mb-2">
+          {/* <div className="mb-2">
              <span className="text-primary font-bold tracking-widest uppercase text-sm">Gallery</span>
              <h1 className="text-5xl md:text-6xl font-bold dark:text-white mt-2">Koleksi Video</h1>
-          </div>
+          </div> */}
         </div>
 
         {/* 2. Memanggil MyVideo dengan isHome={false} 

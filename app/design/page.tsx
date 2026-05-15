@@ -30,10 +30,10 @@ export default function DesignPage() {
           </Link>
 
           {/* Header Judul Halaman */}
-          <div className="mb-2">
+          {/* <div className="mb-2">
              <span className="text-primary font-bold tracking-widest uppercase text-sm">Portfolio</span>
              <h1 className="text-5xl md:text-6xl font-bold dark:text-white mt-2">Graphic Design</h1>
-          </div>
+          </div> */}
         </div>
 
         {/* 2. Memanggil Portfolio dengan isHome={false} 
