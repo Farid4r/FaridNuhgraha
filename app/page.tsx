@@ -6,13 +6,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import ContactFooter from "../components/ContactFooter";
 import MyVideo from "../components/MyVideo";
-// Import Komponen yang baru dibuat
 import Portfolio from "../components/Portfolio";
 import ToolsProcess from "../components/ToolsProcess";
 
 export default function Home() {
   useEffect(() => {
-    // 1. Setup Lenis
     const lenis = new Lenis({ lerp: 0.08 });
     function raf(time: number) {
       lenis.raf(time);
@@ -20,12 +18,9 @@ export default function Home() {
     }
     requestAnimationFrame(raf);
 
-    // 2. Register GSAP
     gsap.registerPlugin(ScrollTrigger);
 
-    // Delay sedikit agar DOM React selesai dirender sebelum animasi jalan
     setTimeout(() => {
-      // 3. Hero Animasi Fade Up
       gsap.to(".gsap-reveal", {
         y: 0,
         opacity: 1,
@@ -34,7 +29,6 @@ export default function Home() {
         ease: "power3.out",
       });
 
-      // 4. Portfolio Scroll Animasi
       gsap.utils.toArray(".portfolio-item").forEach((item: any, i: number) => {
         gsap.to(item, {
           scrollTrigger: {
@@ -50,7 +44,6 @@ export default function Home() {
         });
       });
 
-      // 5. Tools & Process Scroll Animasi
       gsap.utils.toArray(".about-reveal").forEach((elem: any) => {
         gsap.to(elem, {
           scrollTrigger: {
@@ -64,14 +57,12 @@ export default function Home() {
           ease: "power3.out"
         });
       });
-      // Cari bagian animasi contact di useEffect app/page.tsx dan ganti menjadi:
 
-      // 6. Contact & Footer Scroll Animasi
       const contactElements = document.querySelectorAll(".contact-reveal");
       if (contactElements.length > 0) {
         gsap.to(".contact-reveal", {
           scrollTrigger: {
-            trigger: "#contact", // Pastikan ID ini ada di section contact
+            trigger: "#contact", 
             start: "top 80%",
             toggleActions: "play none none none",
           },
@@ -81,23 +72,22 @@ export default function Home() {
           stagger: 0.1,
           ease: "power3.out",
         });
-        // 7. MyVideo Scroll Animasi
-        gsap.utils.toArray(".video-item").forEach((item: any) => {
-          gsap.to(item, {
-            scrollTrigger: {
-              trigger: item,
-              start: "top 85%",
-              toggleActions: "play none none none"
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out"
-          });
-        });
       }
+
+      gsap.utils.toArray(".video-item").forEach((item: any) => {
+        gsap.to(item, {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          },
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
       
-      // Refresh ScrollTrigger agar kalkulasi posisinya akurat
       ScrollTrigger.refresh();
     }, 100);
 
@@ -109,7 +99,6 @@ export default function Home() {
 
   return (
     <main>
-      {/* Hero Section */}
       <section id="about" className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 pt-32 pb-12 gap-12">
         <div className="w-full md:w-3/5 flex flex-col items-start">
             <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
@@ -137,9 +126,9 @@ export default function Home() {
         </div> 
       </section>
 
-      {/* Panggil Komponen Portfolio dan Tools & Process */}
-      <Portfolio />
-      <MyVideo />
+      {/* PROPS isHome DITAMBAHKAN DI SINI */}
+      <Portfolio isHome={true} />
+      <MyVideo isHome={true} />
       <ToolsProcess />
       <ContactFooter />
       

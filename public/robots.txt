@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /design
+Allow: /video
 
+Sitemap: https://nama-domain-kamu.com/sitemap.txt
 Sitemap: https://faridnuhgraha.vercel.app/sitemap.xml
