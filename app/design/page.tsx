@@ -1,27 +1,27 @@
-import MyVideo from "@/components/MyVideo";
+import Portfolio from "@/components/Portfolio";
 import ContactFooter from "@/components/ContactFooter";
 import Link from "next/link";
 import { Metadata } from "next";
 
-// Metadata untuk SEO tetap dipertahankan
 export const metadata: Metadata = {
-  title: "Portofolio Video | Farid Nuhgraha",
-  description: "Kumpulan karya videografi dan motion graphics oleh Farid Nuhgraha.",
+  title: "Koleksi Desain Grafis | Farid Nuhgraha",
+  description: "Eksplorasi karya desain grafis Farid Nuhgraha, mulai dari desain spanduk, logo produk, hingga konten media sosial.",
 };
 
-export default function VideoPage() {
+export default function DesignPage() {
   return (
-    // Menyesuaikan background dengan tema off-white/off-black yang sudah kita set
+    // Background disamakan dengan layout.tsx agar transisi halaman mulus
     <main className="min-h-screen bg-[#FAFAFA] dark:bg-[#0a0a0a] transition-colors duration-300">
       
       {/* 
-        Menyesuaikan padding top agar tidak tertutup Navbar,
-        dan menghapus margin bottom pada tombol agar jarak ke komponen MyVideo lebih natural.
+        SPACING FIX: 
+        Kita kurangi padding top-nya dan buang margin-bottom. 
+        Biarkan komponen Portfolio yang mengatur sisa jaraknya ke bawah.
       */}
       <div className="pt-28 md:pt-36 pb-4">
         <div className="container mx-auto px-6">
           
-          {/* Tombol Back minimalis dan elegan (persis seperti di halaman Design) */}
+          {/* Tombol Kembali: Dibuat minimalis, font kecil, uppercase, efek hover monokrom */}
           <Link 
             href="/" 
             className="group inline-flex items-center gap-3 text-gray-400 hover:text-black dark:text-gray-500 dark:hover:text-white transition-colors duration-500"
@@ -33,12 +33,12 @@ export default function VideoPage() {
             </div>
             <span className="text-xs uppercase tracking-widest font-medium">Kembali</span>
           </Link>
-
+          
         </div>
       </div>
 
-      {/* Komponen MyVideo dipanggil. Garis border-t dan judul "Video." akan langsung menempel rapi di bawah tombol */}
-      <MyVideo isHome={false} />
+      {/* Komponen Portfolio dipanggil. Karena Portfolio.tsx sudah punya garis border-t dan pt-24, jaraknya sekarang akan terlihat pas (tidak bertumpuk) */}
+      <Portfolio isHome={false} />
 
       <ContactFooter />
     </main>
