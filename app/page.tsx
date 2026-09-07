@@ -99,7 +99,7 @@ export default function Home() {
 
   return (
     <main>
-      <section id="about" className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 pt-32 pb-12 gap-12">
+      <section id="about" className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 pt-32 pb-6 gap-12">
         <div className="w-full md:w-3/5 flex flex-col items-start">
             <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
                 Halo, saya Farid. <br/>
@@ -118,7 +118,7 @@ export default function Home() {
                 </a>
             </div>
         </div>
-        <div className="gsap-reveal w-full md:w-2/5 flex justify-center md:justify-end mb-8 md:mb-0">
+        <div className="gsap-reveal w-full md:w-2/5 flex justify-center md:justify-end mb-2 md:mb-0">
             <div className="w-full max-w-sm aspect-4/5 rounded-4xl overflow-hidden relative group shadow-2xl shadow-primary/10">
                 <img src="assets/Profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
                 <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
