@@ -99,34 +99,53 @@ export default function Home() {
 
   return (
     <main>
-      <section id="about" className="min-h-[90vh] flex flex-col-reverse md:flex-row items-center justify-between container mx-auto px-6 pt-32 pb-6 gap-12">
-        <div className="w-full md:w-3/5 flex flex-col items-start">
-            <h1 className="gsap-reveal text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tight dark:text-white">
-                Halo, saya Farid. <br/>
-                <span className="text-gray-400 italic font-normal text-4xl md:text-6xl">Wong Iseng</span>
+      {/* SECTION HERO: Split Layout Sesuai Sketsa */}
+      <section id="about" className="min-h-[85vh] flex flex-col justify-center container mx-auto px-6 pt-32 pb-12">
+        
+        {/* Kontainer Flex Row: Membagi Kiri (Teks) dan Kanan (Foto) */}
+        <div className="flex flex-row items-center md:items-start justify-between gap-4 md:gap-12">
+          
+          {/* SISI KIRI: Susunan Teks (Heading + Subheading + Paragraf) */}
+          <div className="w-[55%] sm:w-3/5 flex flex-col">
+            
+            <h1 className="gsap-reveal text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[1.1]">
+              Halo, saya <br className="block md:hidden" />
+              <span className="font-semibold">Farid.</span>
             </h1>
-            <div className="gsap-reveal text-gray-600 dark:text-gray-400 text-lg md:text-xl mb-10 max-w-lg leading-relaxed space-y-4">
-                <p>
-                    Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio desain grafis & videography. Open kerja di mana aja <span className="italic">(kalo bisa WFH)</span>, selama itu halal.</p>
+            
+            <span className="gsap-reveal font-serif italic text-lg sm:text-2xl md:text-4xl text-gray-500 dark:text-gray-400 mt-1 md:mt-3 block">
+              Wong Iseng
+            </span>
+            
+            {/* Paragraf diletakkan langsung di bawah "Wong Iseng" */}
+            <p className="gsap-reveal text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-lg lg:text-xl mt-4 md:mt-8 max-w-lg leading-relaxed font-light">
+              Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio desain grafis & videography. Open kerja di mana aja <span className="italic font-serif">(kalo bisa WFH)</span>, selama itu halal.
+            </p>
+
+            {/* Tombol Aksi - Dimasukkan ke sisi kiri agar rapi */}
+            <div className="gsap-reveal flex flex-wrap gap-3 mt-6 md:mt-10">
+              <a href="#works" className="bg-black dark:bg-white text-white dark:text-black px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:opacity-80 transition-opacity duration-300">
+                Portfolio
+              </a>
+              <a href="#contact" className="border border-black dark:border-white text-black dark:text-white px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300">
+                Hubungi Saya
+              </a>
             </div>
-            <div className="gsap-reveal flex flex-wrap gap-4 mb-10">
-                <a href="#works" className="bg-dark dark:bg-white text-white dark:text-dark px-8 py-3 rounded-full font-medium hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-all duration-300 transform hover:-translate-y-1">
-                    Portfolio
-                </a>
-                <a href="#contact" className="border border-gray-300 dark:border-gray-700 text-dark dark:text-white px-8 py-3 rounded-full font-medium hover:border-primary dark:hover:border-primary hover:text-primary dark:hover:text-primary transition-all duration-300">
-                    Hubungi Saya
-                </a>
+            
+          </div>
+
+          {/* SISI KANAN: Foto Profil */}
+          <div className="gsap-reveal w-[40%] sm:w-2/5 flex justify-end md:justify-center">
+            {/* Aspect ratio 3/4 agar foto meninggi ke bawah mengimbangi teks di sebelah kirinya */}
+            <div className="w-full max-w-[150px] sm:max-w-[220px] md:max-w-[320px] aspect-[3/4] rounded-md md:rounded-lg overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 ease-out shadow-sm">
+              <img src="assets/Profile.jpg" alt="Farid Profile" className="w-full h-full object-cover" />
             </div>
+          </div>
+
         </div>
-        <div className="gsap-reveal w-full md:w-2/5 flex justify-center md:justify-end mb-2 md:mb-0">
-            <div className="w-full max-w-sm aspect-4/5 rounded-4xl overflow-hidden relative group shadow-2xl shadow-primary/10">
-                <img src="assets/Profile.jpg" alt="Farid Profile" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out" />
-                <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
-            </div>
-        </div> 
       </section>
 
-      {/* PROPS isHome DITAMBAHKAN DI SINI */}
+      {/* Komponen selanjutnya */}
       <Portfolio isHome={true} />
       <MyVideo isHome={true} />
       <ToolsProcess />
