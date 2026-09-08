@@ -62,7 +62,7 @@ export default function Home() {
       if (contactElements.length > 0) {
         gsap.to(".contact-reveal", {
           scrollTrigger: {
-            trigger: "#contact", 
+            trigger: "#contact",
             start: "top 80%",
             toggleActions: "play none none none",
           },
@@ -87,7 +87,7 @@ export default function Home() {
           ease: "power3.out"
         });
       });
-      
+
       ScrollTrigger.refresh();
     }, 100);
 
@@ -97,58 +97,62 @@ export default function Home() {
     };
   }, []);
 
-return (
+  return (
     <main>
       {/* SECTION HERO: Split Layout */}
-      {/* PERBAIKAN: Menghapus min-h-[85vh], flex-col, dan justify-center. Mengandalkan pt-32 untuk jarak navbar */}
       <section id="about" className="container mx-auto px-6 pt-32 pb-16 md:pt-40 md:pb-24">
-        
-        {/* Kontainer Flex Row: Membagi Kiri (Teks) dan Kanan (Foto) */}
+
         <div className="flex flex-row items-center justify-between gap-4 md:gap-12">
-          
-          {/* SISI KIRI: Susunan Teks */}
-          <div className="w-[55%] sm:w-3/5 flex flex-col">
-            
-            <h1 className="gsap-reveal text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light tracking-tighter leading-[1.1] dark:text-white">
+
+          {/* SISI KIRI: Teks */}
+          <div className="w-[64%] sm:w-3/5 flex flex-col">
+
+            <h1 className="gsap-reveal font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight leading-[1.1] text-text-primary">
               Halo, saya <br className="block md:hidden" />
               <span className="font-semibold">Farid.</span>
             </h1>
-            
-            <span className="gsap-reveal font-serif italic text-xl sm:text-2xl md:text-4xl text-gray-500 dark:text-gray-400 mt-1 md:mt-3 block">
+
+            <span className="gsap-reveal font-display italic text-xl sm:text-2xl md:text-4xl text-text-secondary mt-1 md:mt-3 block">
               Wong Iseng
             </span>
-            
-            <p className="gsap-reveal text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-lg lg:text-xl mt-4 md:mt-8 max-w-lg leading-relaxed font-light">
-              Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio desain grafis & videography. Open kerja di mana aja <span className="italic font-serif">(kalo bisa WFH)</span>, selama itu halal.
+
+            <p className="gsap-reveal text-text-secondary text-xs sm:text-sm md:text-lg lg:text-xl mt-4 md:mt-8 max-w-lg leading-relaxed">
+              Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio desain grafis & videography. Open kerja di mana aja{" "}
+              <span className="font-display italic">(kalo bisa WFH)</span>, selama itu halal.
             </p>
 
             <div className="gsap-reveal flex flex-wrap gap-3 mt-6 md:mt-10">
-              <a href="#works" className="bg-black dark:bg-white text-white dark:text-black px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:opacity-80 transition-opacity duration-300">
+              
+                <a href="#works"
+                className="bg-accent text-bg px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:bg-accent-hover transition-colors duration-300"
+              >
                 Portfolio
               </a>
-              <a href="#contact" className="border border-black dark:border-white text-black dark:text-white px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-300">
+              
+                <a href="#contact"
+                className="border border-border text-text-primary px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:border-accent hover:text-accent transition-colors duration-300"
+              >
                 Hubungi Saya
               </a>
             </div>
-            
+
           </div>
 
-          {/* SISI KANAN: Foto Profil */}
-          <div className="gsap-reveal w-[40%] sm:w-2/5 flex justify-end">
-            <div className="w-full max-w-[150px] sm:max-w-[220px] md:max-w-[320px] aspect-[3/4] rounded-md md:rounded-lg overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 ease-out shadow-sm">
-              <img src="assets/Profile.jpg" alt="Farid Profile" className="w-full h-full object-cover" />
+          {/* SISI KANAN: Foto Profil — diperkecil */}
+          <div className="gsap-reveal w-[32%] sm:w-[30%] flex justify-end">
+            <div className="w-full max-w-[110px] sm:max-w-[170px] md:max-w-[220px] aspect-[3/4] rounded-md md:rounded-lg overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 ease-out border border-border">
+              <img src="/assets/Profile.jpg" alt="Farid Profile" className="w-full h-full object-cover" />
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* Komponen selanjutnya tetap sama */}
       <Portfolio isHome={true} />
       <MyVideo isHome={true} />
       <ToolsProcess />
       <ContactFooter />
-      
+
     </main>
   );
 }

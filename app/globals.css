@@ -3,11 +3,35 @@
 /* 1. KUNCI DARK MODE MANUAL DI TAILWIND V4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Konfigurasi warna kustom di Tailwind v4 */
 @theme {
+  /* --- Warna lama (dipertahankan sementara, akan dihapus setelah semua komponen migrasi) --- */
   --color-primary: #2596be;
   --color-dark: #111827;
   --color-light: #f8fafc;
+
+  /* --- Warna baru --- */
+  --color-bg: #131110;            /* base near-black, warm undertone */
+  --color-surface: #1d1a18;       /* card/section background */
+  --color-surface-hover: #242020; /* hover state card */
+  --color-border: #2a2624;        /* border tipis, low contrast */
+
+  --color-text-primary: #f3ede4;   /* off-white warm, bukan pure white */
+  --color-text-secondary: #a39a8f; /* abu-abu hangat untuk deskripsi */
+  --color-text-muted: #6f6660;     /* untuk caption/label kecil */
+
+  --color-accent: #d68c45;        /* burnt amber - accent utama */
+  --color-accent-hover: #e2a05f;  /* accent saat hover/active */
+  --color-accent-soft: #d68c4526; /* accent alpha ~15%, untuk background tag/badge */
+
+  /* --- Font --- */
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-manrope);
+  --font-mono: var(--font-plex-mono);
+
+  /* ...token di atas... */
+  --font-family-display: var(--font-display), serif;
+  --font-family-body: var(--font-body), sans-serif;
+  --font-family-mono: var(--font-mono), monospace;
 }
 
 /* Custom CSS untuk Portfolio */
@@ -21,9 +45,8 @@ html.lenis { height: auto; }
 .gsap-reveal { opacity: 0; transform: translateY(30px); }
 .portfolio-item { opacity: 0; transform: translateY(50px); }
 .about-reveal { opacity: 0; transform: translateY(30px); }
-/* Ubah dari opacity: 0 menjadi opacity: 1 jika ingin langsung muncul tanpa animasi */
 .contact-reveal { 
   opacity: 0; 
   transform: translateY(30px); 
-  transition: opacity 0.5s ease; /* Cadangan jika GSAP gagal */
+  transition: opacity 0.5s ease;
 }

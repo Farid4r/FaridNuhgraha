@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google"; 
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar"; 
+import Navbar from "../components/Navbar";
 
-// Konfigurasi font Inter (Sans-serif untuk keterbacaan)
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
 
-// Konfigurasi font Playfair Display (Serif untuk kesan elegan)
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Farid | Graphic Designer",
@@ -21,8 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      {/* Menerapkan variabel font dan mengubah background menjadi off-black/off-white yang lebih elegan */}
-      <body className={`${inter.variable} ${playfair.variable} font-sans bg-[#FAFAFA] dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-100 antialiased selection:bg-gray-300 selection:text-black transition-colors duration-300 overflow-x-hidden`}>
+      <body
+        className={`${fraunces.variable} ${manrope.variable} font-body
+          bg-bg text-text-primary antialiased
+          selection:bg-accent/30 selection:text-inherit
+          overflow-x-hidden`}
+      >
         <Navbar />
         {children}
       </body>
