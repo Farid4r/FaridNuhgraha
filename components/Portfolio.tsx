@@ -72,8 +72,7 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
           )}
         </div>
 
-        <div className="grid grid-cols-2
-         md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
           {displayedProjects.map((project) => (
             <div
               key={project.id}
