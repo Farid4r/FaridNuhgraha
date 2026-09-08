@@ -22,11 +22,27 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
       title: "Family Gathering Recap",
       vimeoId: "1190688538",
     },
+    // {
+    //   id: "4",
+    //   title: "Birthday Recap 21th",
+    //   vimeoId: "1177724269",
+    // },
     {
-      id: "4",
-      title: "Birthday Recap 21th",
-      vimeoId: "1177724269",
-    }
+      id: "5",
+      title: "Bxchange vlog",
+      vimeoId: "1224665528",
+    },
+    {
+      id: "6",
+      title: "Hiking Recap",
+      vimeoId: "1224664593",
+    },
+    {
+      id: "7",
+      title: "Zoo",
+      vimeoId: "1224664012",
+    },
+    { id: "8", title: "Before sidang", vimeoId: "1224661081" },
   ];
 
   const displayedVideos = isHome ? videos.slice(0, 1) : videos;
