@@ -95,7 +95,7 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
                   Browser kamu tidak mendukung pemutaran video.
                 </video>
               </div>
-              <div className="mt-6">
+              <div className="mt-6 flex items-center gap-4">
                 <span className="text-gray-400 text-sm font-light">0{video.id} —</span>
                 <h3 className="text-xl md:text-2xl font-medium dark:text-white">{video.title}</h3>
               </div>
