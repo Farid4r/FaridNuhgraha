@@ -32,7 +32,7 @@ export default function VideoPage() {
 
       <MyVideo isHome={false} />
 
-      <ContactFooter />
+      {/* <ContactFooter /> */}
     </main>
   );
 }

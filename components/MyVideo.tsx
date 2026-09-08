@@ -5,44 +5,53 @@ interface MyVideoProps {
   isHome?: boolean;
 }
 
-export default function MyVideo({ isHome = false }: MyVideoProps) {
+const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+
+function getVideoUrl(publicId: string) {
+  return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/f_auto,q_auto/${publicId}.mp4`;
+}
+
+function getPosterUrl(publicId: string) {
+  // so_2 = ambil frame di detik ke-2 sebagai poster
+  return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/so_2,f_auto,q_auto/${publicId}.jpg`;
+}
+
+export default function MyVideo({ isHome = false }: MyVideoProps) { 
   const videos = [
     {
-      id: "1",
-      title: "Goes To Tasik",
-      vimeoId: "1190497149",
+      id: "7",
+      title: "Before Sidang",
+      publicId: "prepare_before__sidang_1080p",
+    },
+    {  id: "6",
+      title: "Hike",
+      publicId: "curug_1080p",
     },
     {
-      id: "2",
-      title: "At Tasikmalaya",
-      vimeoId: "1190521095",
+      id: "5",
+      title: "zoo vlog",
+      publicId: "zoo_1080p",
+    },
+    {
+      id: "4",
+      title: "Fam Edition",
+      publicId: "fam_edition",
     },
     {
       id: "3",
-      title: "Family Gathering Recap",
-      vimeoId: "1190688538",
-    },
-    // {
-    //   id: "4",
-    //   title: "Birthday Recap 21th",
-    //   vimeoId: "1177724269",
-    // },
-    {
-      id: "5",
-      title: "Bxchange vlog",
-      vimeoId: "1224665528",
+      title: "Bxchange",
+      publicId: "bxchange_v1_1080p",
     },
     {
-      id: "6",
-      title: "Hiking Recap",
-      vimeoId: "1224664593",
+      id: "2",
+      title: "At tasik",
+      publicId: "attasik_v1",
     },
     {
-      id: "7",
-      title: "Zoo",
-      vimeoId: "1224664012",
-    },
-    { id: "8", title: "Before sidang", vimeoId: "1224661081" },
+      id: "1",
+      title: "Goes To Tasik",
+      publicId: "goestotasik",
+    }
   ];
 
   const displayedVideos = isHome ? videos.slice(0, 1) : videos;
@@ -70,19 +79,23 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
           )}
         </div>
 
-        {/* Grid Video */}
         <div className={`grid grid-cols-1 ${isHome ? 'lg:grid-cols-1 max-w-4xl' : 'lg:grid-cols-2'} gap-12`}>
           {displayedVideos.map((video) => (
             <div key={video.id} className="video-item group">
               <div className="aspect-video w-full bg-surface rounded-md overflow-hidden border border-border transition-colors duration-500 group-hover:border-accent/40">
-                <iframe
-                  src={`https://player.vimeo.com/video/${video.vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&color=ffffff&title=0&byline=0&portrait=0`}
-                  allow="fullscreen; picture-in-picture; clipboard-write"
-                  className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700"
+                <video
+                  src={getVideoUrl(video.publicId)}
+                  poster={getPosterUrl(video.publicId)}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   title={video.title}
-                ></iframe>
+                >
+                  Browser kamu tidak mendukung pemutaran video.
+                </video>
               </div>
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-6">
                 <span className="text-gray-400 text-sm font-light">0{video.id} —</span>
                 <h3 className="text-xl md:text-2xl font-medium dark:text-white">{video.title}</h3>
               </div>

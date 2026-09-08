@@ -32,7 +32,7 @@ export default function DesignPage() {
 
       <Portfolio isHome={false} />
 
-      <ContactFooter />
+      {/* <ContactFooter /> */}
     </main>
   );
 }
