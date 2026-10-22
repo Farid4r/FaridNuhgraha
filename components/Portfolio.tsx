@@ -1,53 +1,19 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { projects, type PortfolioProject } from "@/data/portfolio";
 
 interface PortfolioProps {
   isHome?: boolean;
 }
 
 export default function Portfolio({ isHome = false }: PortfolioProps) {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
 
-  const openModal = (project: any) => setSelectedProject(project);
+  const openModal = (project: PortfolioProject) => setSelectedProject(project);
   const closeModal = () => setSelectedProject(null);
 
-  const allProjects = [
-    {
-      id: 1,
-      title: "Spanduk",
-      category: "Banner",
-      img: "/assets/Banner.jpg",
-      description: "Desain spanduk informatif dengan tata letak visual yang hierarkis.",
-      customClass: "col-span-1 md:col-span-2 md:row-span-2"
-    },
-    {
-      id: 2,
-      title: "Logo Produk",
-      category: "Logo",
-      img: "/assets/Logo.jpg",
-      description: "Logo ini dirancang fleksibel agar tetap proporsional dan solid.",
-      customClass: ""
-    },
-    {
-      id: 3,
-      title: "Instagram Story",
-      category: "Social Media",
-      img: "/assets/Instastory.jpg",
-      description: "Membuat desain Instagram Story menyesuaikan kebutuhan klien.",
-      customClass: "md:row-span-2"
-    },
-    {
-      id: 4,
-      title: "Feeds Instagram",
-      category: "Social Media",
-      img: "/assets/Feed.jpg",
-      description: "Membuat feeds instagram untuk promosi produk atau konten edukatif.",
-      customClass: "col-span-1 md:col-span-2"
-    }
-  ];
-
-  const displayedProjects = isHome ? allProjects.slice(0, 2) : allProjects;
+  const displayedProjects = isHome ? projects.slice(0, 2) : projects;
 
   return (
     <>

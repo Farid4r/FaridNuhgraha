@@ -1,104 +1,13 @@
-"use client";
-
-import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
-import ContactFooter from "../components/ContactFooter";
-import MyVideo from "../components/MyVideo";
-import Portfolio from "../components/Portfolio";
-import ToolsProcess from "../components/ToolsProcess";
+import ContactFooter from "@/components/ContactFooter";
+import HomeEffects from "@/components/HomeEffects";
+import MyVideo from "@/components/MyVideo";
+import Portfolio from "@/components/Portfolio";
+import ToolsProcess from "@/components/ToolsProcess";
 
 export default function Home() {
-  useEffect(() => {
-    const lenis = new Lenis({ lerp: 0.08 });
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    setTimeout(() => {
-      gsap.to(".gsap-reveal", {
-        y: 0,
-        opacity: 1,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: "power3.out",
-      });
-
-      gsap.utils.toArray(".portfolio-item").forEach((item: any, i: number) => {
-        gsap.to(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          delay: i * 0.1
-        });
-      });
-
-      gsap.utils.toArray(".about-reveal").forEach((elem: any) => {
-        gsap.to(elem, {
-          scrollTrigger: {
-            trigger: elem,
-            start: "top 90%",
-            toggleActions: "play none none none"
-          },
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out"
-        });
-      });
-
-      const contactElements = document.querySelectorAll(".contact-reveal");
-      if (contactElements.length > 0) {
-        gsap.to(".contact-reveal", {
-          scrollTrigger: {
-            trigger: "#contact",
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.1,
-          ease: "power3.out",
-        });
-      }
-
-      gsap.utils.toArray(".video-item").forEach((item: any) => {
-        gsap.to(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          },
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power3.out"
-        });
-      });
-
-      ScrollTrigger.refresh();
-    }, 100);
-
-    return () => {
-      lenis.destroy();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-
   return (
     <main>
+      <HomeEffects />
       {/* SECTION HERO: Split Layout */}
       <section id="about" className="container mx-auto px-6 pt-32 pb-16 md:pt-40 md:pb-24">
 

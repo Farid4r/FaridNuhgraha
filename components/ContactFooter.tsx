@@ -1,11 +1,5 @@
-"use client";
-import { usePathname } from "next/navigation";
-
 export default function ContactFooter() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-
-  const revealClass = !isHome ? "!opacity-100 !translate-y-0" : "opacity-0 translate-y-10";
+  const revealClass = "opacity-0 translate-y-10";
 
   return (
     <>
@@ -68,15 +62,12 @@ export default function ContactFooter() {
       <footer className="py-8 pb-12 transition-colors duration-300">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-text-muted">
           <p>&copy; 2026 Farid. All rights reserved.</p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="hover:text-accent transition-colors flex items-center gap-2 group"
-          >
+          <a href="#top" className="hover:text-accent transition-colors flex items-center gap-2 group">
             Kembali ke atas
             <svg className="w-3 h-3 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
             </svg>
-          </button>
+          </a>
         </div>
       </footer>
     </>

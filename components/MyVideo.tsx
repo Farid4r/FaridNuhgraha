@@ -1,5 +1,5 @@
-"use client";
 import Link from "next/link";
+import { videos } from "@/data/portfolio";
 
 interface MyVideoProps {
   isHome?: boolean;
@@ -17,43 +17,6 @@ function getPosterUrl(publicId: string) {
 }
 
 export default function MyVideo({ isHome = false }: MyVideoProps) { 
-  const videos = [
-    {
-      id: "7",
-      title: "Before Sidang",
-      publicId: "prepare_before__sidang_1080p",
-    },
-    {  id: "6",
-      title: "Hike",
-      publicId: "curug_1080p",
-    },
-    {
-      id: "5",
-      title: "zoo vlog",
-      publicId: "zoo_1080p",
-    },
-    {
-      id: "4",
-      title: "Fam Edition",
-      publicId: "fam_edition",
-    },
-    {
-      id: "3",
-      title: "Bxchange",
-      publicId: "bxchange_v1_1080p",
-    },
-    {
-      id: "2",
-      title: "At tasik",
-      publicId: "attasik_v1",
-    },
-    {
-      id: "1",
-      title: "Goes To Tasik",
-      publicId: "goestotasik",
-    }
-  ];
-
   const displayedVideos = isHome ? videos.slice(0, 1) : videos;
 
   return (
@@ -61,10 +24,10 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
       <div className="container mx-auto px-6">
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="video-reveal font-display text-4xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
+            <h2 className="font-display text-4xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
               Video.
             </h2>
-            <p className="video-reveal text-text-secondary max-w-lg text-base md:text-lg">
+            <p className="text-text-secondary max-w-lg text-base md:text-lg">
               Kumpulan dokumentasi visual.
             </p>
           </div>

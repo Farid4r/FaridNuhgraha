@@ -1,7 +1,6 @@
 import MyVideo from "@/components/MyVideo";
-import ContactFooter from "@/components/ContactFooter";
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Portofolio Video | Farid Nuhgraha",
@@ -31,8 +30,6 @@ export default function VideoPage() {
       </div>
 
       <MyVideo isHome={false} />
-
-      {/* <ContactFooter /> */}
     </main>
   );
 }
