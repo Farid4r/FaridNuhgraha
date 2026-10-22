@@ -1,4 +1,5 @@
 import Portfolio from "@/components/Portfolio";
+import ContactFooter from "@/components/ContactFooter";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -30,6 +31,7 @@ export default function DesignPage() {
       </div>
 
       <Portfolio isHome={false} />
+      <ContactFooter />
     </main>
   );
 }

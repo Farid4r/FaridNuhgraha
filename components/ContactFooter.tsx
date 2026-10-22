@@ -1,5 +1,11 @@
-export default function ContactFooter() {
-  const revealClass = "opacity-0 translate-y-10";
+interface ContactFooterProps {
+  isHome?: boolean;
+}
+
+export default function ContactFooter({ isHome = false }: ContactFooterProps) {
+  const revealClass = isHome
+    ? "opacity-0 translate-y-10"
+    : "!opacity-100 !translate-y-0";
 
   return (
     <>

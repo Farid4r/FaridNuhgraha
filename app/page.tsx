@@ -156,7 +156,7 @@ export default function Home() {
       <Portfolio isHome={true} />
       <MyVideo isHome={true} />
       <ToolsProcess />
-      <ContactFooter />
+      <ContactFooter isHome />
     </main>
   );
 }

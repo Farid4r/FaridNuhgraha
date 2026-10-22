@@ -1,4 +1,5 @@
 import MyVideo from "@/components/MyVideo";
+import ContactFooter from "@/components/ContactFooter";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -30,6 +31,7 @@ export default function VideoPage() {
       </div>
 
       <MyVideo isHome={false} />
+      <ContactFooter />
     </main>
   );
 }
