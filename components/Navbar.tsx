@@ -47,7 +47,7 @@ export default function Navbar() {
 
           <button
             onClick={toggleMenu}
-            className="md:hidden text-text-primary focus:outline-none"
+            className="md:hidden text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
           >
             <svg

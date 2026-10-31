@@ -27,8 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="id" className="scroll-smooth" suppressHydrationWarning>
       <body
+        id="top"
         className={`${fraunces.variable} ${manrope.variable} font-body
           bg-bg text-text-primary antialiased
           selection:bg-accent/30 selection:text-inherit

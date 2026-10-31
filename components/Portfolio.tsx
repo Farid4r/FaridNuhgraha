@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { projects, type PortfolioProject } from "@/data/portfolio";
 
@@ -9,9 +9,51 @@ interface PortfolioProps {
 
 export default function Portfolio({ isHome = false }: PortfolioProps) {
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   const openModal = (project: PortfolioProject) => setSelectedProject(project);
   const closeModal = () => setSelectedProject(null);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    previousFocusRef.current = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setSelectedProject(null);
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) return;
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocusRef.current?.focus();
+    };
+  }, [selectedProject]);
 
   const displayedProjects = isHome ? projects.slice(0, 2) : projects;
 
@@ -40,35 +82,45 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
           {displayedProjects.map((project) => (
-            <div
+            <button
               key={project.id}
+              type="button"
               onClick={() => openModal(project)}
-              className={`portfolio-item pointer-events-auto touch-manipulation rounded-2xl overflow-hidden relative group bg-surface border border-border cursor-pointer transition-colors duration-300 hover:border-accent/40 ${project.customClass} ${!isHome ? "!opacity-100 !translate-y-0" : "opacity-0 translate-y-10"}`}
+              aria-label={`Lihat detail ${project.title}`}
+              aria-haspopup="dialog"
+              className={`portfolio-item pointer-events-auto touch-manipulation w-full h-full text-left p-0 rounded-2xl overflow-hidden relative group bg-surface border border-border cursor-pointer transition-colors duration-300 hover:border-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg ${project.customClass} ${!isHome ? "!opacity-100 !translate-y-0" : "opacity-0 translate-y-10"}`}
             >
               <img
                 src={project.img}
-                alt={project.title}
+                alt=""
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+              <span className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                 <span className="text-text-secondary text-sm mb-1">{project.category}</span>
-                <h3 className="font-display text-white text-xl">{project.title}</h3>
-              </div>
-            </div>
+                <span className="font-display text-white text-xl">{project.title}</span>
+              </span>
+            </button>
           ))}
         </div>
       </section>
 
       {selectedProject && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div aria-hidden="true" className="absolute inset-0 bg-bg/90 backdrop-blur-sm animate-fade-in"></div>
           <div
-            onClick={closeModal}
-            className="absolute inset-0 bg-bg/90 backdrop-blur-sm animate-fade-in cursor-pointer"
-          ></div>
-          <div className="relative bg-surface border border-border w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl animate-slide-up flex flex-col">
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-dialog-title"
+            tabIndex={-1}
+            className="relative bg-surface border border-border w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl animate-slide-up flex flex-col"
+          >
             <button
+              ref={closeButtonRef}
               onClick={closeModal}
-              className="absolute top-4 right-4 z-10 bg-bg/80 hover:bg-surface-hover p-2 rounded-full text-text-primary transition-colors duration-200"
+              type="button"
+              aria-label="Tutup detail proyek"
+              className="absolute top-4 right-4 z-10 bg-bg/80 hover:bg-surface-hover p-2 rounded-full text-text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -80,7 +132,7 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
               </div>
               <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
                 <span className="text-accent text-sm mb-2">{selectedProject.category}</span>
-                <h3 className="font-display text-3xl mb-6 text-text-primary">{selectedProject.title}</h3>
+                <h3 id="project-dialog-title" className="font-display text-3xl mb-6 text-text-primary">{selectedProject.title}</h3>
                 <p className="text-text-secondary leading-relaxed whitespace-pre-line text-lg">
                   {selectedProject.description}
                 </p>

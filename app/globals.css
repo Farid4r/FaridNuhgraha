@@ -17,7 +17,7 @@
 
   --color-text-primary: #f3ede4;   /* off-white warm, bukan pure white */
   --color-text-secondary: #a39a8f; /* abu-abu hangat untuk deskripsi */
-  --color-text-muted: #6f6660;     /* untuk caption/label kecil */
+  --color-text-muted: #95887e;     /* muted text still meets normal-text contrast on the page background */
 
   --color-accent: #d68c45;        /* burnt amber - accent utama */
   --color-accent-hover: #e2a05f;  /* accent saat hover/active */
@@ -49,4 +49,26 @@ html.lenis { height: auto; }
   opacity: 0; 
   transform: translateY(30px); 
   transition: opacity 0.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .gsap-reveal,
+  .portfolio-item,
+  .about-reveal,
+  .contact-reveal,
+  .video-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

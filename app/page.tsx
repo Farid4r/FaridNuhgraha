@@ -11,6 +11,8 @@ import ToolsProcess from "../components/ToolsProcess";
 
 export default function Home() {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     const lenis = new Lenis({ lerp: 0.08 });
     function raf(time: number) {
       lenis.raf(time);
@@ -29,7 +31,7 @@ export default function Home() {
         ease: "power3.out",
       });
 
-      gsap.utils.toArray(".portfolio-item").forEach((item: any, i: number) => {
+      gsap.utils.toArray<HTMLElement>(".portfolio-item").forEach((item, i) => {
         gsap.to(item, {
           scrollTrigger: {
             trigger: item,
@@ -44,7 +46,7 @@ export default function Home() {
         });
       });
 
-      gsap.utils.toArray(".about-reveal").forEach((elem: any) => {
+      gsap.utils.toArray<HTMLElement>(".about-reveal").forEach((elem) => {
         gsap.to(elem, {
           scrollTrigger: {
             trigger: elem,
@@ -74,7 +76,7 @@ export default function Home() {
         });
       }
 
-      gsap.utils.toArray(".video-item").forEach((item: any) => {
+      gsap.utils.toArray<HTMLElement>(".video-item").forEach((item) => {
         gsap.to(item, {
           scrollTrigger: {
             trigger: item,
