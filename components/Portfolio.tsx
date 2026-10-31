@@ -20,8 +20,8 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
       <section id="works" className="container mx-auto px-6 py-6 relative z-10">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="font-display text-4xl md:text-5xl font-medium tracking-tight mb-4 text-text-primary">
-              Design
+            <h2 className="font-display text-4xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
+              Design.
             </h2>
             <p className="text-text-secondary max-w-lg text-lg">
               Kumpulan hasil desain yang saya buat.
