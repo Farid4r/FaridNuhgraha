@@ -106,9 +106,18 @@ export default function Home() {
         id="about"
         className="container mx-auto px-6 pt-32 pb-16 md:pt-40 md:pb-24"
       >
-        <div className="flex flex-row items-center justify-between gap-4 md:gap-12">
-          {/* SISI KIRI: Teks */}
-          <div className="w-[64%] sm:w-3/5 flex flex-col">
+        <div className="grid grid-cols-[minmax(5.5rem,28%)_minmax(0,1fr)] items-center gap-x-4 gap-y-4 sm:grid-cols-[minmax(8rem,30%)_minmax(0,1fr)] sm:gap-x-8 md:grid-cols-[minmax(12rem,30%)_minmax(0,1fr)] md:gap-x-12">
+          <div className="gsap-reveal w-full flex justify-start">
+            <div className="w-full max-w-27.5 sm:max-w-42.5 md:max-w-55 aspect-square rounded-full overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 ease-out border border-border">
+              <img
+                src="/assets/Profile.jpg"
+                alt="Farid Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="flex min-w-0 flex-col">
             <h1 className="gsap-reveal font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight leading-[1.1] text-text-primary">
               Halo, saya <br className="block md:hidden" />
               <span className="font-semibold">Farid.</span>
@@ -118,39 +127,29 @@ export default function Home() {
               Wong Iseng
             </span>
 
-            <p className="gsap-reveal text-text-secondary text-xs sm:text-sm md:text-lg lg:text-xl mt-4 md:mt-8 max-w-lg leading-relaxed">
-              Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio
-              desain grafis & videography. Open kerja di mana aja{" "}
-              <span className="font-display italic">(kalo bisa WFH)</span>,
-              selama itu halal.
-            </p>
-
-            <div className="gsap-reveal flex flex-wrap gap-3 mt-6 md:mt-10">
-              <a
-                href="#works"
-                className="bg-accent text-bg px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:bg-accent-hover transition-colors duration-300"
-              >
-                Portfolio
-              </a>
-
-              <a
-                href="#contact"
-                className="border border-border text-text-primary px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:border-accent hover:text-accent transition-colors duration-300"
-              >
-                Hubungi Saya
-              </a>
-            </div>
           </div>
 
-          {/* SISI KANAN: Foto Profil — diperkecil */}
-          <div className="gsap-reveal w-[32%] sm:w-[30%] flex justify-end">
-            <div className="w-full max-w-27.5 sm:max-w-42.5 md:max-w-55 aspect-3/4 rounded-md md:rounded-lg overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 ease-out border border-border">
-              <img
-                src="/assets/Profile.jpg"
-                alt="Farid Profile"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <p className="gsap-reveal col-span-2 text-text-secondary text-xs sm:text-sm md:text-lg lg:text-xl mt-2 md:mt-4 max-w-3xl leading-relaxed">
+            Art enthusiast 21 tahun yang lagi asyik ngumpulin portofolio desain
+            grafis & videography. Open kerja di mana aja{" "}
+            <span className="font-display italic">(kalo bisa WFH)</span>, selama
+            itu halal.
+          </p>
+
+          <div className="gsap-reveal col-span-2 flex flex-wrap gap-3 mt-2 md:mt-4">
+            <a
+              href="#works"
+              className="bg-accent text-bg px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:bg-accent-hover transition-colors duration-300"
+            >
+              Portfolio
+            </a>
+
+            <a
+              href="#contact"
+              className="border border-border text-text-primary px-5 py-2.5 md:px-8 md:py-3 rounded-md font-medium text-xs md:text-base hover:border-accent hover:text-accent transition-colors duration-300"
+            >
+              Hubungi Saya
+            </a>
           </div>
         </div>
       </section>
