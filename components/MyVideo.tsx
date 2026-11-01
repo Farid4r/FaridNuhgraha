@@ -20,11 +20,11 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
   const displayedVideos = isHome ? videos.slice(0, 1) : videos;
 
   return (
-    <section id="videos" className="py-24 transition-colors duration-300 border-t border-border">
+    <section id="videos" className="py-16 md:py-24 transition-colors duration-300 border-t border-border">
       <div className="container mx-auto px-6">
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="font-display text-4xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
+            <h2 className="font-display text-3xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
               Video.
             </h2>
             <p className="text-text-secondary max-w-lg text-base md:text-lg">
@@ -42,7 +42,7 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
           )}
         </div>
 
-        <div className={`grid grid-cols-1 ${isHome ? 'lg:grid-cols-1 max-w-4xl' : 'lg:grid-cols-2'} gap-12`}>
+        <div className={`grid grid-cols-1 ${isHome ? 'lg:grid-cols-1 max-w-4xl' : 'lg:grid-cols-2'} gap-8 md:gap-12`}>
           {displayedVideos.map((video) => (
             <div key={video.id} className="video-item group">
               <div className="aspect-video w-full bg-surface rounded-md overflow-hidden border border-border transition-colors duration-500 group-hover:border-accent/40">
@@ -52,7 +52,7 @@ export default function MyVideo({ isHome = false }: MyVideoProps) {
                   controls
                   playsInline
                   preload="metadata"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-700"
                   title={video.title}
                 >
                   Browser kamu tidak mendukung pemutaran video.

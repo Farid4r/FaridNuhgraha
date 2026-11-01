@@ -1,13 +1,13 @@
 export default function ToolsProcess() {
   return (
-    <section className="py-24 md:py-32 border-t border-border transition-colors duration-300">
+    <section className="py-16 md:py-32 border-t border-border transition-colors duration-300">
       <div className="container mx-auto px-6">
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-12 about-reveal">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-12 about-reveal">
 
           {/* Sisi Kiri: Judul */}
           <div className="w-full md:w-1/3">
-            <h2 className="font-display text-4xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
+            <h2 className="font-display text-3xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
               Software.
             </h2>
             <p className="text-text-secondary text-base md:text-lg">

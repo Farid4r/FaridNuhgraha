@@ -60,9 +60,9 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
   return (
     <>
       <section id="works" className="container mx-auto px-6 py-6 relative z-10">
-        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <h2 className="font-display text-4xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
+            <h2 className="font-display text-3xl md:text-5xl italic font-medium tracking-tight mb-4 text-text-primary">
               Design.
             </h2>
             <p className="text-text-secondary max-w-lg text-lg">
@@ -80,7 +80,7 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[220px] sm:auto-rows-[260px] md:auto-rows-[300px]">
           {displayedProjects.map((project) => (
             <button
               key={project.id}
@@ -95,7 +95,7 @@ export default function Portfolio({ isHome = false }: PortfolioProps) {
                 alt=""
                 className="w-full h-full object-cover"
               />
-              <span className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+              <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 md:p-8">
                 <span className="text-text-secondary text-sm mb-1">{project.category}</span>
                 <span className="font-display text-white text-xl">{project.title}</span>
               </span>

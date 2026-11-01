@@ -46,9 +46,12 @@ export default function Navbar() {
           </div>
 
           <button
+            type="button"
             onClick={toggleMenu}
-            className="md:hidden text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="md:hidden inline-flex min-h-11 min-w-11 items-center justify-center text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             aria-label={isMenuOpen ? "Tutup menu" : "Buka menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <svg
               className={`w-6 h-6 transition-transform duration-300 ${isMenuOpen ? "rotate-90" : ""}`}
@@ -67,19 +70,22 @@ export default function Navbar() {
       </div>
 
       <div
+        id="mobile-navigation"
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
         className={`absolute top-full left-0 w-full bg-surface border-b border-border shadow-lg transform transition-all duration-300 ease-in-out md:hidden flex flex-col px-6 py-6 gap-6 text-center text-lg font-medium ${
           isMenuOpen
             ? "translate-y-0 opacity-100 pointer-events-auto"
             : "-translate-y-full opacity-0 pointer-events-none"
         }`}
       >
-        <Link href="/" onClick={toggleMenu} className="text-text-primary hover:text-accent">
+        <Link href="/" onClick={toggleMenu} className="min-h-11 flex items-center justify-center text-text-primary hover:text-accent">
           Home
         </Link>
-        <Link href="/design" onClick={toggleMenu} className="text-text-primary hover:text-accent">
+        <Link href="/design" onClick={toggleMenu} className="min-h-11 flex items-center justify-center text-text-primary hover:text-accent">
           Design
         </Link>
-        <Link href="/video" onClick={toggleMenu} className="text-text-primary hover:text-accent">
+        <Link href="/video" onClick={toggleMenu} className="min-h-11 flex items-center justify-center text-text-primary hover:text-accent">
           Video
         </Link>
       </div>
